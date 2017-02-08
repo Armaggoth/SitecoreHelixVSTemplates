@@ -1,0 +1,49 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Sitecore Helix Module Web Project</Name>
+    <Description>Sitecore Helix Module Web Project</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Sitecore Helix Module Web Project</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="$safeprojectname$.csproj" File="Feature.csproj" ReplaceParameters="true">
+      <Folder Name="App_Data" TargetFolderName="App_Data" />
+      <Folder Name="App_Start" TargetFolderName="App_Start">
+        <ProjectItem ReplaceParameters="true" TargetFileName="RazorGeneratorMvcStart.cs">RazorGeneratorMvcStart.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Controllers" TargetFolderName="Controllers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="FeatureController.cs">FeatureController.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Models" TargetFolderName="Models">
+        <ProjectItem ReplaceParameters="true" TargetFileName="FeatureContent.cs">FeatureContent.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Tag.cs">Tag.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+        <Folder Name="PublishProfiles" TargetFolderName="PublishProfiles">
+        </Folder>
+      </Folder>
+      <Folder Name="Providers" TargetFolderName="Providers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="FeatureProvider.cs">FeatureProvider.cs</ProjectItem>
+        <Folder Name="Interfaces" TargetFolderName="Interfaces">
+          <ProjectItem ReplaceParameters="true" TargetFileName="IFeatureProvider.cs">IFeatureProvider.cs</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Views" TargetFolderName="Views">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Feature.cshtml">Feature.cshtml</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" OpenInWebBrowser ="true" >index.html</ProjectItem>
+      <ProjectItem ReplaceParameters="true" >stylesheet.css</ProjectItem>
+      <ProjectItem ReplaceParameters="true" >Templates.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

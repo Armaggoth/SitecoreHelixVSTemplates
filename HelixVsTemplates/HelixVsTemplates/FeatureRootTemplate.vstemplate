@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="ProjectGroup" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Sitecore Helix Feature</Name>
+    <Description>This template creates the necessary projects for a Sitecore Helix Module</Description>
+    <Icon>RootTemplate.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <SortOrder>1000</SortOrder>
+    <TemplateID>cb769ea6-9576-4d8b-ac95-37cbeb11e6ab</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>SitecoreHelixFeature</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectCollection>
+      <SolutionFolder Name="$safeprojectname$">
+        <ProjectTemplateLink ReplaceParameters="true" ProjectName="$safeprojectname$" CopyParameters="true">
+          Feature\Feature.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ReplaceParameters="true" ProjectName="$safeprojectname$.Master"  CopyParameters="true">
+          TDSMasterProject\TDSMasterProject.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ReplaceParameters="true" ProjectName="$safeprojectname$.Core" CopyParameters="true">
+          TDSCoreProject\TDSCoreProject.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ReplaceParameters="true" ProjectName="$safeprojectname$.Test" CopyParameters="true">
+          TestProject\TestProject.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ReplaceParameters="true" ProjectName="$safeprojectname$.Client" CopyParameters="true">
+          Client\Client.vstemplate
+        </ProjectTemplateLink>
+      </SolutionFolder>
+    </ProjectCollection>
+  </TemplateContent>
+</VSTemplate>

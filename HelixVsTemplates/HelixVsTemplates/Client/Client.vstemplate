@@ -1,0 +1,40 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Client</Name>
+    <Description>The FrontEnd fileds for the module</Description>
+    <ProjectType>Web</ProjectType>
+    <ProjectSubType>CSharp</ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Client</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <SpecialTemplateType>EmptyShared</SpecialTemplateType>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="$safeprojectname$.webproj" File="ProjectName.webproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="false" TargetFileName=".babelrc">.babelrc</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName=".editorconfig">.editorconfig</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName=".eslintrc.json">.eslintrc.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName=".gitattributes">.gitattributes</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName=".gitignore">.gitignore</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName=".sass-lint.yml">.sass-lint.yml</ProjectItem>
+      <Folder Name="app" TargetFolderName="app">
+        <Folder Name="fonts" TargetFolderName="fonts" />
+        <Folder Name="images" TargetFolderName="images" />
+        <Folder Name="partials" TargetFolderName="partials" />
+        <Folder Name="scripts" TargetFolderName="scripts">
+          <ProjectItem ReplaceParameters="true" TargetFileName="main.js">main.js</ProjectItem>
+        </Folder>
+        <Folder Name="styles" TargetFolderName="styles">
+          <ProjectItem ReplaceParameters="false" TargetFileName="main.scss">main.scss</ProjectItem>
+        </Folder>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="build-html.js">build-html.js</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="zip-node-modules.js">zip-node-modules.js</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

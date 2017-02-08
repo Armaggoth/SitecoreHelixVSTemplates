@@ -1,0 +1,21 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Sitecore Helix Module TDS Master Project</Name>
+    <Description>Sitecore Helix Module TDS Master Project</Description>
+    <ProjectType>TDS Project</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Sitecore Helix Module TDS Master Project</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="$safeprojectname$.scproj" File="TDSMasterProject.scproj" ReplaceParameters="true">
+      <ProjectItem>dummy.txt</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

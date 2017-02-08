@@ -1,0 +1,68 @@
+{
+  "name": "xom.intranet.client",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "copy-files:fonts": "copyfiles -u 1 app/fonts/*/* dist",
+    "copy-files:images": "copyfiles -u 1 app/images/*/* dist",
+    "copy-files:markup": "copyfiles -f ./markup/*.html dist",
+    "copy-files": "parallelshell \"npm run copy-files:images\" \"npm run copy-files:fonts\"",
+    "clean": "rimraf \"dist\" && rimraf \"markup\" && mkdirp \"dist/scripts\" && mkdirp \"dist/styles\" && mkdirp \"markup\"",
+    "prebuild": "npm run clean",
+    "build": "parallelshell \"npm run build-css -- --output-style compressed\" \"npm run build-js\" \"npm run copy-files\"",
+    "build-css": "node-sass app/styles -o dist/styles",
+    "build-js:main": "browserify app/scripts/main.js -t babelify -x jquery -x babel-polyfill -x custom-event-polyfill -x @hugeinc/stickynav -x hammerjs -x vue -x moment | uglifyjs -cm --comments -o dist/scripts/main.js",
+    "build-js:vendors": "browserify -r jquery -r babel-polyfill -r custom-event-polyfill -r @hugeinc/stickynav -r hammerjs -r vue -r moment | uglifyjs -cm --comments -o dist/scripts/vendors.js",
+    "build-js": "parallelshell \"npm run build-js:main\" \"npm run build-js:vendors\"",
+    "build-html": "node build-html.js",
+    "watch-css": "npm run build-css && npm run build-css -- -w",
+    "watch-js:main": "watchify app/scripts/main.js -t babelify -x jquery -x babel-polyfill -x custom-event-polyfill -x @hugeinc/stickynav -x hammerjs -x vue -x moment -o dist/scripts/main.js",
+    "watch-js:vendors": "watchify -r jquery -r babel-polyfill -r custom-event-polyfill -r @hugeinc/stickynav -r hammerjs -r vue -r moment -o dist/scripts/vendors.js",
+    "watch-js": "parallelshell \"npm run watch-js:main\" \"npm run watch-js:vendors\"",
+    "watch-html": "watch \"npm run build-html\" app/partials",
+    "watch": "parallelshell \"npm run watch-css\" \"npm run watch-js\" \"npm run watch-html\"",
+    "lint-js": "eslint \"app/scripts/**\"; exit 0",
+    "lint-scss": "sass-lint -c .sass-lint.yml \"app/styles/**/*.scss\" -v -q",
+    "lint": "parallelshell \"npm run lint-scss\" \"npm run lint-js\"",
+    "image-min": "imageoptim -d app/images",
+    "preserve": "npm run clean",
+    "serve": "npm run copy-files && browser-sync start -s \"markup\" -s \"dist\" -f \"markup\" -f \"dist\"",
+    "dev": "parallelshell \"npm run watch\" \"npm run serve\"",
+    "zip-nm": "node zip-node-modules.js"
+  },
+  "browser": {
+    "vue": "vue/dist/vue.common"
+  },
+  "dependencies": {
+    "@hugeinc/stickynav": "git+https://github.com/apathetic/stickynav.git",
+    "archiver": "^1.3.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.5",
+    "browserify": "^13.1.1",
+    "browsernizr": "^2.1.0",
+    "copyfiles": "^1.0.0",
+    "custom-event-polyfill": "^0.3.0",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.1.1",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.17.1",
+    "node-sass": "^3.13.0",
+    "parallelshell": "^2.0.0",
+    "rimraf": "^2.5.4",
+    "uglify-js": "^2.7.5",
+    "vue": "^2.1.8"
+  },
+  "devDependencies": {
+    "eslint": "^3.11.1",
+    "html-partials-compiler": "^1.0.7",
+    "imageoptim-cli": "^1.14.8",
+    "sass-lint": "^1.10.2",
+    "watch": "^1.0.1",
+    "watchify": "^3.7.0"
+  }
+}

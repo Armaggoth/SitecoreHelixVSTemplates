@@ -1,0 +1,43 @@
+﻿@using System.Globalization
+@using Sitecore.Globalization
+@using Feature.Models;
+@using Sitecore.Mvc;
+@using System.Web.Mvc.Html;
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FeatureContent>
+@{
+    var formatedDate = @Model.PublishDate.ToString("MMMM d, yyyy", new CultureInfo(Sitecore.Context.Language.Name));
+}
+<article class="main-article">
+    <header class="article-header">
+        @Html.Sitecore().Placeholder("breadcrumb")
+        <div class="header-text">
+            <h1>@Editable(x => x.Title)</h1>
+
+            @if (Model.Tags.Count() > 0)
+            {
+                <p class="article-tags">
+                    @foreach (var tag in Model.Tags)
+                {
+                    var separator = (Model.Tags.ToList().IndexOf(tag) != (Model.Tags.Count() - 1) && (Model.Tags.Count() > 1)) ? ", " : string.Empty;
+                    var tagString = string.Format("{0}{1}", tag.TagName, separator);
+                        @tagString
+                    }
+                </p>
+            }
+            @if (Model.DisplayByline)
+            {
+                <div class="byline">
+                    @if (!String.IsNullOrEmpty(Model.Author))
+                    {
+                        <address class="author">Written by @Editable(x => x.Author)</address>@(!Model.PublishDate.Equals(default(DateTime)) ? Html.Raw(", ") : Html.Raw(string.Empty))
+                    }
+                    <time pubdate datetime="@Model.PublishDate.ToShortDateString()" title="">@(Sitecore.Context.PageMode.IsExperienceEditorEditing ? Editable(x => x.PublishDate, x => x.PublishDate.ToString("MMMM d, yyyy", new CultureInfo(Sitecore.Context.Language.Name))) : (!Model.PublishDate.Equals(default(DateTime)) ? Html.Raw(formatedDate) : Html.Raw(string.Empty))) </time>
+                </div>
+            }
+        </div>
+        <p class="sub-heading">@Editable(x => x.Introduction)</p>
+        <div class="article-separator"></div>
+    </header>
+
+    @Html.Sitecore().Placeholder("article")
+</article>

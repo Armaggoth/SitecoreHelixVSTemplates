@@ -1,0 +1,24 @@
+﻿@using Sitecore.Mvc
+
+@{
+    var style = Sitecore.Context.PageMode.IsExperienceEditorEditing ? "edition-mode" : string.Empty;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="~/assets/styles/main.css" rel="stylesheet" />
+</head>
+<body class="@style">
+    <div class="page-wrapper">
+        @Html.Sitecore().Placeholder("header")
+        <main class="main-content">
+            @Html.Sitecore().Placeholder("main")
+        </main>
+        @Html.Sitecore().Placeholder("footer")
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+#########################
+## Sample Sass Lint File
+#########################
+# Linter Options
+options:
+  # Merge default rules
+  merge-default-rules: true
+  # Set the formatter to 'html'
+  #formatter: html
+  # Raise an error if more than 50 warnings are generated
+  max-warnings: 50
+# File Options
+#files:
+#  include: 'sass/**/*.s+(a|c)ss'
+#  ignore:
+#    - 'sass/vendor/**/*.*'
+# Rule Configuration
+rules:
+  brace-style:
+    - 1
+    -
+      style: 'stroustrup'
+  function-name-format:
+    - 1
+    -
+      convention: 'camelcase'
+  nesting-depth:
+    - 1
+    -
+      max-depth: 3
+  variable-for-property:
+    - 2
+    -
+      properties:
+        - color
