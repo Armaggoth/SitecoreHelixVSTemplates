@@ -1,4 +1,4 @@
-# Sitecore Helix Visual Stufio Project Templates with TDS
+# Sitecore Helix Visual Studio Project Templates with TDS
 
     Copyright (C) 2017  Cristian Delgado
 
